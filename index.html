@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coorg Weekend — Our Itinerary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#faf6f1;
+  --bg-deep:#f0e9df;
+  --text:#2c2416;
+  --text-muted:#7a6e5d;
+  --accent:#4a6741;
+  --accent-light:#6b8f5e;
+  --terracotta:#c4704b;
+  --gold:#c9a84c;
+  --cream:#fff8ef;
+  --card-shadow:0 4px 30px rgba(44,36,22,.08);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ─── HERO ─── */
+.hero{
+  position:relative;
+  height:100vh;
+  min-height:600px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  overflow:hidden;
+}
+.hero__bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1920&q=80') center/cover no-repeat;
+  filter:brightness(.55) saturate(1.1);
+  transform:scale(1.05);
+  animation:heroZoom 20s ease-in-out infinite alternate;
+}
+@keyframes heroZoom{from{transform:scale(1.05)}to{transform:scale(1.12)}}
+.hero__overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(44,36,22,.85) 0%,rgba(44,36,22,.3) 40%,transparent 70%);
+}
+.hero__content{
+  position:relative;z-index:2;
+  text-align:center;
+  padding:0 2rem 6vh;
+  max-width:800px;
+  animation:fadeUp 1.2s ease-out both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.hero__tag{
+  font-family:'DM Sans',sans-serif;
+  font-size:.75rem;
+  font-weight:600;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:1rem;
+}
+.hero__title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,8vw,6rem);
+  font-weight:700;
+  color:#fff;
+  line-height:1.05;
+  margin-bottom:.75rem;
+}
+.hero__subtitle{
+  font-family:'Source Serif 4',serif;
+  font-size:clamp(1.1rem,2.5vw,1.4rem);
+  color:rgba(255,255,255,.8);
+  font-weight:300;
+  font-style:italic;
+}
+.hero__scroll{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  color:rgba(255,255,255,.5);
+  font-size:.7rem;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  animation:pulse 2s ease-in-out infinite;
+}
+.hero__scroll span{display:block;width:1px;height:30px;background:rgba(255,255,255,.3)}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+
+/* ─── INTRO STRIP ─── */
+.intro{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:2rem;
+  padding:3rem 2rem;
+  background:var(--accent);
+  color:var(--cream);
+}
+.intro__item{
+  text-align:center;
+  min-width:140px;
+}
+.intro__label{
+  font-size:.65rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  opacity:.7;
+  margin-bottom:.25rem;
+}
+.intro__value{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;
+  font-weight:700;
+}
+
+/* ─── DAY HEADER ─── */
+.day-header{
+  position:relative;
+  padding:5rem 2rem 3rem;
+  text-align:center;
+  overflow:hidden;
+}
+.day-header::before{
+  content:'';
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:1px;height:3rem;
+  background:var(--accent-light);
+}
+.day-header__num{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(4rem,10vw,7rem);
+  font-weight:700;
+  color:var(--accent);
+  opacity:.12;
+  line-height:1;
+  position:absolute;
+  top:2.5rem;left:50%;transform:translateX(-50%);
+}
+.day-header__label{
+  font-size:.7rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--terracotta);
+  font-weight:600;
+  position:relative;
+}
+.day-header__title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,5vw,3rem);
+  font-weight:700;
+  color:var(--text);
+  position:relative;
+}
+
+/* ─── TIMELINE ─── */
+.timeline{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 2rem 4rem;
+  position:relative;
+}
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:50%;top:0;bottom:0;
+  width:2px;
+  background:linear-gradient(to bottom,var(--accent-light),transparent);
+  transform:translateX(-50%);
+}
+@media(max-width:768px){
+  .timeline::before{left:1.5rem}
+}
+
+/* ─── CARD ─── */
+.card{
+  position:relative;
+  width:calc(50% - 3rem);
+  margin-bottom:3rem;
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.card.visible{opacity:1;transform:translateY(0)}
+.card:nth-child(odd){margin-left:0;margin-right:auto}
+.card:nth-child(even){margin-left:auto;margin-right:0}
+
+/* timeline dot */
+.card::before{
+  content:'';
+  position:absolute;
+  top:2rem;
+  width:12px;height:12px;
+  border-radius:50%;
+  background:var(--accent);
+  border:3px solid var(--bg);
+  z-index:2;
+}
+.card:nth-child(odd)::before{right:-3rem;transform:translateX(50%)}
+.card:nth-child(even)::before{left:-3rem;transform:translateX(-50%)}
+
+/* connector line */
+.card::after{
+  content:'';
+  position:absolute;
+  top:2.25rem;
+  width:2.5rem;
+  height:2px;
+  background:var(--accent-light);
+  opacity:.4;
+}
+.card:nth-child(odd)::after{right:-2.75rem}
+.card:nth-child(even)::after{left:-2.75rem}
+
+@media(max-width:768px){
+  .card{width:calc(100% - 3.5rem);margin-left:3.5rem!important;margin-right:0!important}
+  .card::before{left:-2rem!important;right:auto!important;transform:translateX(-50%)!important}
+  .card::after{left:-1.75rem!important;right:auto!important;width:1.5rem}
+}
+
+.card__inner{
+  background:var(--cream);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:var(--card-shadow);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.card__inner:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 40px rgba(44,36,22,.12);
+}
+
+.card__img{
+  position:relative;
+  height:200px;
+  overflow:hidden;
+}
+.card__img img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .6s ease;
+}
+.card__inner:hover .card__img img{transform:scale(1.05)}
+
+.card__time-badge{
+  position:absolute;
+  top:1rem;left:1rem;
+  background:rgba(44,36,22,.75);
+  backdrop-filter:blur(8px);
+  color:#fff;
+  padding:.35rem .75rem;
+  border-radius:100px;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.05em;
+}
+
+.card__type-badge{
+  position:absolute;
+  bottom:1rem;right:1rem;
+  padding:.3rem .7rem;
+  border-radius:100px;
+  font-size:.6rem;
+  font-weight:600;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+.badge--meal{background:var(--terracotta);color:#fff}
+.badge--sight{background:var(--accent);color:#fff}
+.badge--stay{background:var(--gold);color:var(--text)}
+.badge--activity{background:#5a7d9a;color:#fff}
+.badge--history{background:#8b6f5c;color:#fff}
+
+.card__body{padding:1.25rem 1.5rem 1.5rem}
+
+.card__name{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;
+  font-weight:700;
+  color:var(--text);
+  margin-bottom:.15rem;
+  line-height:1.3;
+}
+.card__place{
+  font-size:.8rem;
+  color:var(--terracotta);
+  font-weight:500;
+  margin-bottom:.6rem;
+}
+.card__desc{
+  font-family:'Source Serif 4',serif;
+  font-size:.92rem;
+  color:var(--text-muted);
+  line-height:1.7;
+}
+.card__access{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  margin-top:.75rem;
+  padding:.3rem .65rem;
+  background:var(--bg-deep);
+  border-radius:8px;
+  font-size:.72rem;
+  color:var(--accent);
+  font-weight:500;
+}
+.card__access svg{width:14px;height:14px;flex-shrink:0}
+
+/* ─── PHOTO BREAK ─── */
+.photo-break{
+  position:relative;
+  height:45vh;
+  min-height:300px;
+  overflow:hidden;
+  margin:2rem 0;
+}
+.photo-break img{
+  width:100%;height:100%;
+  object-fit:cover;
+  filter:brightness(.7) saturate(1.1);
+}
+.photo-break__caption{
+  position:absolute;
+  bottom:2rem;left:2rem;right:2rem;
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:clamp(1.2rem,3vw,1.8rem);
+  color:#fff;
+  text-shadow:0 2px 20px rgba(0,0,0,.4);
+}
+
+/* ─── FOOTER ─── */
+.footer{
+  text-align:center;
+  padding:4rem 2rem;
+  background:var(--accent);
+  color:var(--cream);
+}
+.footer__heart{
+  font-size:2rem;
+  margin-bottom:1rem;
+  animation:heartbeat 1.5s ease-in-out infinite;
+}
+@keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.footer__text{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;
+  font-weight:700;
+  margin-bottom:.5rem;
+}
+.footer__sub{
+  font-size:.85rem;
+  opacity:.7;
+}
+
+/* ─── NOISE OVERLAY ─── */
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  pointer-events:none;
+  z-index:9999;
+  opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat:repeat;
+  background-size:256px 256px;
+}
+
+/* ─── UTILS ─── */
+@media(max-width:480px){
+  .card__img{height:160px}
+  .intro{gap:1rem;padding:2rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero__bg"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <p class="hero__tag">A Weekend Escape</p>
+    <h1 class="hero__title">Coorg</h1>
+    <p class="hero__subtitle">Mist, coffee, and the quiet of the Western Ghats</p>
+  </div>
+  <div class="hero__scroll">
+    scroll
+    <span></span>
+  </div>
+</section>
+
+<!-- ═══ INTRO STRIP ═══ -->
+<div class="intro">
+  <div class="intro__item">
+    <p class="intro__label">Duration</p>
+    <p class="intro__value">2 Days</p>
+  </div>
+  <div class="intro__item">
+    <p class="intro__label">Region</p>
+    <p class="intro__value">Kodagu</p>
+  </div>
+  <div class="intro__item">
+    <p class="intro__label">Base</p>
+    <p class="intro__value">Madikeri</p>
+  </div>
+  <div class="intro__item">
+    <p class="intro__label">Vibe</p>
+    <p class="intro__value">Slow & Easy</p>
+  </div>
+</div>
+
+<!-- ═══ DAY 1 — SATURDAY ═══ -->
+<div class="day-header">
+  <span class="day-header__num">01</span>
+  <p class="day-header__label">Day One</p>
+  <h2 class="day-header__title">Saturday</h2>
+</div>
+
+<section class="timeline">
+
+  <!-- 8:30 AM — Breakfast -->
+  <article class="card">
+    <div class="card__inner">
+      <div class="card__img">
+        <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&q=80" alt="South Indian breakfast" loading="lazy">
+        <span class="card__time-badge">8:30 AM</span>
+        <span class="card__type-badge badge--meal">Breakfast</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Paakashala</h3>
+        <p class="card__place">Mysore Highway</p>
+        <p class="card__desc">Clean, reliable stop on the Mysore highway. Easy parking and fresh South Indian food to start the journey.</p>
+        <span class="card__access">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Easy parking &amp; access
+        </span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 11:30 AM — Golden Temple -->
+  <article class="card">
+    <div class="card__inner">
+      <div class="card__img">
+        <img src="https://images.unsplash.com/photo-1626621331169-5f34be280ed9?w=800&q=80" alt="Namdroling Monastery Golden Temple" loading="lazy">
+        <span class="card__time-badge">11:30 AM</span>
+        <span class="card__type-badge badge--sight">Sightseeing</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Namdroling Monastery</h3>
+        <p class="card__place">Bylakuppe — Golden Temple</p>
+        <p class="card__desc">The largest Tibetan Buddhist settlement in India. Golden statues, intricate murals, and a serene atmosphere that feels worlds away.</p>
+        <span class="card__access">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Entirely flat &amp; paved — very easy to walk
+        </span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 1:00 PM — Lunch -->
+  <article class="card">
+    <div class="card__inner">
+      <div class="card__img">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80" alt="Specialty coffee and pizza" loading="lazy">
+        <span class="card__time-badge">1:00 PM</span>
+        <span class="card__type-badge badge--meal">Lunch &amp; Coffee</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Fifth Generation Cafe</h3>
+        <p class="card__place">Specialty Coffee Stop</p>
+        <p class="card__desc">Your one great specialty coffee stop. Chill vibe, wood-fired pizzas, and excellent brews in a beautiful setting.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 3:00 PM — Check-in -->
+  <article class="card">
+    <div class="card__inner">
+      <div class="card__img">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Coorg homestay" loading="lazy">
+        <span class="card__time-badge">3:00 PM</span>
+        <span class="card__type-badge badge--stay">Check-in</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Madikeri Stay</h3>
+        <p class="card__place">Your Home Base</p>
+        <p class="card__desc">Drop off bags and rest after the morning drive. Recharge before the evening unfolds.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 5:30 PM — Sunset -->
+  <article class="card">
+    <div class="card__inner">
+      <div class="card__img">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Valley sunset view" loading="lazy">
+        <span class="card__time-badge">5:30 PM</span>
+        <span class="card__type-badge badge--sight">Sunset</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Raja Seat Garden</h3>
+        <p class="card__place">Short drive from stay</p>
+        <p class="card__desc">Incredible valley views stretching to the horizon. The kings of Kodagu chose this spot for a reason — the sunsets here are unforgettable.</p>
+        <span class="card__access">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Plenty of benches, no climbing
+        </span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 7:30 PM — Dinner -->
+  <article class="card">
+    <div class="card__inner">
+      <div class="card__img">
+        <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=800&q=80" alt="Traditional Coorgi meal" loading="lazy">
+        <span class="card__time-badge">7:30 PM</span>
+        <span class="card__type-badge badge--meal">Dinner</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Tiger Tiger</h3>
+        <p class="card__place">Near Raja's Seat</p>
+        <p class="card__desc">Traditional slow-cooked Coorgi meals in a quiet, intimate setting. The perfect end to day one.</p>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<!-- ═══ PHOTO BREAK ═══ -->
+<div class="photo-break">
+  <img src="https://images.unsplash.com/photo-1582407947092-50b8a2fa23fa?w=1920&q=80" alt="Coffee plantation in Coorg" loading="lazy">
+  <p class="photo-break__caption">"The land of coffee, mist, and stories whispered through the trees."</p>
+</div>
+
+<!-- ═══ DAY 2 — SUNDAY ═══ -->
+<div class="day-header">
+  <span class="day-header__num">02</span>
+  <p class="day-header__label">Day Two</p>
+  <h2 class="day-header__title">Sunday</h2>
+</div>
+
+<section class="timeline">
+
+  <!-- 9:30 AM — Breakfast -->
+  <article class="card">
+    <div class="card__inner">
+      <div class="card__img">
+        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&q=80" alt="Heritage cafe morning" loading="lazy">
+        <span class="card__time-badge">9:30 AM</span>
+        <span class="card__type-badge badge--meal">Breakfast</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Beans N Brews at Raintree</h3>
+        <p class="card__place">Heritage House</p>
+        <p class="card__desc">A heritage house with a relaxed patio. Very cozy atmosphere for a slow morning — no rush, just warmth and good food.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 11:00 AM — Coffee Plantation -->
+  <article class="card">
+    <div class="card__inner">
+      <div class="card__img">
+        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=80" alt="Coffee plantation tour" loading="lazy">
+        <span class="card__time-badge">11:00 AM</span>
+        <span class="card__type-badge badge--activity">Activity</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Mercara Gold Estate</h3>
+        <p class="card__place">Coffee Plantation Tour</p>
+        <p class="card__desc">Guided tour at a gentle pace through the coffee and spice estate. Learn how beans go from plant to cup.</p>
+        <span class="card__access">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Flat sections &amp; cafe to sit at
+        </span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 1:30 PM — Lunch -->
+  <article class="card">
+    <div class="card__inner">
+      <div class="card__img">
+        <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=800&q=80" alt="Coorgi cuisine" loading="lazy">
+        <span class="card__time-badge">1:30 PM</span>
+        <span class="card__type-badge badge--meal">Lunch</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Coorg Cuisine</h3>
+        <p class="card__place">Town Center</p>
+        <p class="card__desc">Hearty and authentic Coorgi food right in the town center. Don't miss the Akki Rotti — a local rice flatbread you'll remember.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- 3:30 PM — Temple -->
+  <article class="card">
+    <div class="card__inner">
+      <div class="card__img">
+        <img src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2?w=800&q=80" alt="Temple architecture" loading="lazy">
+        <span class="card__time-badge">3:30 PM</span>
+        <span class="card__type-badge badge--sight">Sightseeing</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Shri Omkareshwara Swamy Temple</h3>
+        <p class="card__place">Madikeri</p>
+        <p class="card__desc">A peaceful temple complex blending Islamic and Gothic architecture with Hindu tradition. Sit by the water tank and soak in the calm.</p>
+        <span class="card__access">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Flat temple complex
+        </span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 5:00 PM — Fort -->
+  <article class="card">
+    <div class="card__inner">
+      <div class="card__img">
+        <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&q=80" alt="Historic fort" loading="lazy">
+        <span class="card__time-badge">5:00 PM</span>
+        <span class="card__type-badge badge--history">History</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">Madikeri Fort</h3>
+        <p class="card__place">Madikeri Town</p>
+        <p class="card__desc">Walk through centuries of Kodagu history. The museum inside tells the story of the region, and the stone elephants at the gate are iconic.</p>
+        <span class="card__access">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Driver drops at entrance — flat walk inside
+        </span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 7:30 PM — Dinner -->
+  <article class="card">
+    <div class="card__inner">
+      <div class="card__img">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Old school restaurant" loading="lazy">
+        <span class="card__time-badge">7:30 PM</span>
+        <span class="card__type-badge badge--meal">Dinner</span>
+      </div>
+      <div class="card__body">
+        <h3 class="card__name">East End Hotel</h3>
+        <p class="card__place">Final Comfort Meal</p>
+        <p class="card__desc">A local favorite to close the trip. Nostalgic old-school vibe, honest food, and very easy to access. The perfect goodbye to Coorg.</p>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer__heart">&#9829;</div>
+  <p class="footer__text">Can't wait for this trip together</p>
+  <p class="footer__sub">Made with love &bull; See you on the road</p>
+</footer>
+
+<script>
+// Scroll-triggered card reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.card').forEach(card => observer.observe(card));
+</script>
+</body>
+</html>
