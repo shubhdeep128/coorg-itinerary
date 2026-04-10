@@ -42,8 +42,8 @@ body{
 }
 .hero__bg{
   position:absolute;inset:0;
-  background:url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1920&q=80') center/cover no-repeat;
-  filter:brightness(.55) saturate(1.1);
+  background:url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Coorg_3.jpg/1280px-Coorg_3.jpg') center/cover no-repeat;
+  filter:brightness(.5) saturate(1.1);
   transform:scale(1.05);
   animation:heroZoom 20s ease-in-out infinite alternate;
 }
@@ -109,7 +109,7 @@ body{
 }
 .intro__item{
   text-align:center;
-  min-width:140px;
+  min-width:120px;
 }
 .intro__label{
   font-size:.65rem;
@@ -178,9 +178,6 @@ body{
   background:linear-gradient(to bottom,var(--accent-light),transparent);
   transform:translateX(-50%);
 }
-@media(max-width:768px){
-  .timeline::before{left:1.5rem}
-}
 
 /* ─── CARD ─── */
 .card{
@@ -222,12 +219,6 @@ body{
 .card:nth-child(odd)::after{right:-2.75rem}
 .card:nth-child(even)::after{left:-2.75rem}
 
-@media(max-width:768px){
-  .card{width:calc(100% - 3.5rem);margin-left:3.5rem!important;margin-right:0!important}
-  .card::before{left:-2rem!important;right:auto!important;transform:translateX(-50%)!important}
-  .card::after{left:-1.75rem!important;right:auto!important;width:1.5rem}
-}
-
 .card__inner{
   background:var(--cream);
   border-radius:16px;
@@ -242,7 +233,7 @@ body{
 
 .card__img{
   position:relative;
-  height:200px;
+  height:220px;
   overflow:hidden;
 }
 .card__img img{
@@ -303,6 +294,45 @@ body{
   color:var(--text-muted);
   line-height:1.7;
 }
+
+/* ─── INFO BOX ─── */
+.card__info{
+  margin-top:.85rem;
+  padding:.85rem 1rem;
+  background:var(--bg);
+  border-radius:10px;
+  border-left:3px solid var(--accent-light);
+}
+.card__info-title{
+  font-size:.68rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:.35rem;
+}
+.card__info-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:.25rem;
+}
+.card__info-list li{
+  font-size:.8rem;
+  color:var(--text-muted);
+  padding-left:1rem;
+  position:relative;
+  line-height:1.5;
+}
+.card__info-list li::before{
+  content:'';
+  position:absolute;
+  left:0;top:.55rem;
+  width:5px;height:5px;
+  border-radius:50%;
+  background:var(--accent-light);
+}
+
 .card__access{
   display:inline-flex;
   align-items:center;
@@ -377,10 +407,40 @@ body::after{
   background-size:256px 256px;
 }
 
-/* ─── UTILS ─── */
+/* ─── MOBILE RESPONSIVE ─── */
+@media(max-width:768px){
+  .timeline::before{left:1.25rem}
+  .card{width:calc(100% - 3rem);margin-left:3rem!important;margin-right:0!important}
+  .card::before{left:-1.75rem!important;right:auto!important;transform:translateX(-50%)!important}
+  .card::after{left:-1.5rem!important;right:auto!important;width:1.25rem}
+  .card__img{height:180px}
+  .card__body{padding:1rem 1.25rem 1.25rem}
+  .card__name{font-size:1.15rem}
+  .hero{min-height:500px}
+  .day-header{padding:4rem 1.5rem 2rem}
+  .photo-break{height:35vh;min-height:220px}
+  .photo-break__caption{bottom:1.5rem;left:1.5rem;right:1.5rem}
+}
+
 @media(max-width:480px){
+  .timeline::before{left:1rem}
+  .card{width:calc(100% - 2.5rem);margin-left:2.5rem!important}
+  .card::before{left:-1.25rem!important;width:10px;height:10px}
+  .card::after{left:-1rem!important;width:1rem}
   .card__img{height:160px}
-  .intro{gap:1rem;padding:2rem 1rem}
+  .card__body{padding:.85rem 1rem 1rem}
+  .card__name{font-size:1.05rem}
+  .card__desc{font-size:.85rem}
+  .card__info{padding:.7rem .85rem}
+  .card__info-list li{font-size:.75rem}
+  .intro{gap:.75rem;padding:1.5rem 1rem}
+  .intro__item{min-width:100px}
+  .intro__value{font-size:1.1rem}
+  .hero__content{padding:0 1.5rem 5vh}
+  .hero{min-height:450px}
+  .footer{padding:3rem 1.5rem}
+  .footer__text{font-size:1.2rem}
+  .day-header{padding:3.5rem 1rem 1.5rem}
 }
 </style>
 </head>
@@ -430,11 +490,11 @@ body::after{
 
 <section class="timeline">
 
-  <!-- 8:30 AM — Breakfast -->
+  <!-- 8:30 AM — Breakfast at Paakashala -->
   <article class="card">
     <div class="card__inner">
       <div class="card__img">
-        <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=800&q=80" alt="South Indian breakfast" loading="lazy">
+        <img src="https://b.zmtcdn.com/data/pictures/chains/1/50641/81d75789c6e1e50e2bd04510be498ddd.jpg" alt="Paakashala restaurant on the highway" loading="lazy">
         <span class="card__time-badge">8:30 AM</span>
         <span class="card__type-badge badge--meal">Breakfast</span>
       </div>
@@ -442,6 +502,15 @@ body::after{
         <h3 class="card__name">Paakashala</h3>
         <p class="card__place">Mysore Highway</p>
         <p class="card__desc">Clean, reliable stop on the Mysore highway. Easy parking and fresh South Indian food to start the journey.</p>
+        <div class="card__info">
+          <p class="card__info-title">What to expect</p>
+          <ul class="card__info-list">
+            <li>Pure veg chain — reliable and hygienic</li>
+            <li>Order the Masala Dosa or Idli-Vada combo</li>
+            <li>Filter coffee is a must before hitting the road</li>
+            <li>Clean restrooms and ample parking</li>
+          </ul>
+        </div>
         <span class="card__access">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           Easy parking &amp; access
@@ -454,7 +523,7 @@ body::after{
   <article class="card">
     <div class="card__inner">
       <div class="card__img">
-        <img src="https://images.unsplash.com/photo-1626621331169-5f34be280ed9?w=800&q=80" alt="Namdroling Monastery Golden Temple" loading="lazy">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Namrodoling_Monastery_Bylakuppe2.jpg/800px-Namrodoling_Monastery_Bylakuppe2.jpg" alt="Namdroling Monastery Golden Temple, Bylakuppe" loading="lazy">
         <span class="card__time-badge">11:30 AM</span>
         <span class="card__type-badge badge--sight">Sightseeing</span>
       </div>
@@ -462,6 +531,15 @@ body::after{
         <h3 class="card__name">Namdroling Monastery</h3>
         <p class="card__place">Bylakuppe — Golden Temple</p>
         <p class="card__desc">The largest Tibetan Buddhist settlement in India. Golden statues, intricate murals, and a serene atmosphere that feels worlds away.</p>
+        <div class="card__info">
+          <p class="card__info-title">What to do here</p>
+          <ul class="card__info-list">
+            <li>Walk through the three towering golden Buddha statues inside</li>
+            <li>Admire the hand-painted murals covering every wall and ceiling</li>
+            <li>Sit in the courtyard and soak in the peaceful chanting</li>
+            <li>Pick up Tibetan souvenirs and prayer flags from the stalls outside</li>
+          </ul>
+        </div>
         <span class="card__access">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           Entirely flat &amp; paved — very easy to walk
@@ -470,18 +548,27 @@ body::after{
     </div>
   </article>
 
-  <!-- 1:00 PM — Lunch -->
+  <!-- 1:00 PM — Fifth Generation Cafe -->
   <article class="card">
     <div class="card__inner">
       <div class="card__img">
-        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80" alt="Specialty coffee and pizza" loading="lazy">
+        <img src="https://static.wixstatic.com/media/b1334c_3edb02aaf4484c619ca5cb4422023655~mv2.png/v1/fill/w_1280,h_761,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Estate%20Tour.png" alt="Fifth Generation Cafe estate and cafe" loading="lazy">
         <span class="card__time-badge">1:00 PM</span>
         <span class="card__type-badge badge--meal">Lunch &amp; Coffee</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Fifth Generation Cafe</h3>
-        <p class="card__place">Specialty Coffee Stop</p>
-        <p class="card__desc">Your one great specialty coffee stop. Chill vibe, wood-fired pizzas, and excellent brews in a beautiful setting.</p>
+        <p class="card__place">Kushalnagar, Coorg</p>
+        <p class="card__desc">A 5th-generation Coorg coffee family's estate-to-cup cafe. Wood-fired pizzas, artisanal brews, and a chill vibe surrounded by coffee plants.</p>
+        <div class="card__info">
+          <p class="card__info-title">What to do here</p>
+          <ul class="card__info-list">
+            <li>Try their single-origin pour-over or cold brew</li>
+            <li>Order a wood-fired pizza — surprisingly great for Coorg</li>
+            <li>Walk around the small estate garden after lunch</li>
+            <li>Pick up freshly roasted beans or cocoa products as gifts</li>
+          </ul>
+        </div>
       </div>
     </div>
   </article>
@@ -490,7 +577,7 @@ body::after{
   <article class="card">
     <div class="card__inner">
       <div class="card__img">
-        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Coorg homestay" loading="lazy">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Coorg_3.jpg/800px-Coorg_3.jpg" alt="Scenic Coorg landscape from a stay" loading="lazy">
         <span class="card__time-badge">3:00 PM</span>
         <span class="card__type-badge badge--stay">Check-in</span>
       </div>
@@ -498,22 +585,39 @@ body::after{
         <h3 class="card__name">Madikeri Stay</h3>
         <p class="card__place">Your Home Base</p>
         <p class="card__desc">Drop off bags and rest after the morning drive. Recharge before the evening unfolds.</p>
+        <div class="card__info">
+          <p class="card__info-title">What to do here</p>
+          <ul class="card__info-list">
+            <li>Freshen up and have some tea or coffee on the patio</li>
+            <li>Take a short nap — the evening has a beautiful sunset ahead</li>
+            <li>Enjoy the misty valley views from the property</li>
+          </ul>
+        </div>
       </div>
     </div>
   </article>
 
-  <!-- 5:30 PM — Sunset -->
+  <!-- 5:30 PM — Raja Seat -->
   <article class="card">
     <div class="card__inner">
       <div class="card__img">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Valley sunset view" loading="lazy">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Raja%27s_Seat_View_Point.jpg/800px-Raja%27s_Seat_View_Point.jpg" alt="Raja's Seat viewpoint, Madikeri" loading="lazy">
         <span class="card__time-badge">5:30 PM</span>
         <span class="card__type-badge badge--sight">Sunset</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Raja Seat Garden</h3>
         <p class="card__place">Short drive from stay</p>
-        <p class="card__desc">Incredible valley views stretching to the horizon. The kings of Kodagu chose this spot for a reason — the sunsets here are unforgettable.</p>
+        <p class="card__desc">The kings of Kodagu chose this spot for a reason — incredible valley views and the most spectacular sunsets in the Western Ghats.</p>
+        <div class="card__info">
+          <p class="card__info-title">What to do here</p>
+          <ul class="card__info-list">
+            <li>Arrive 30 mins before sunset to grab a bench with a view</li>
+            <li>Walk through the flower garden and musical fountain area</li>
+            <li>Watch the clouds roll through the valley below — magical at golden hour</li>
+            <li>Entry is just INR 20 per person</li>
+          </ul>
+        </div>
         <span class="card__access">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           Plenty of benches, no climbing
@@ -522,18 +626,27 @@ body::after{
     </div>
   </article>
 
-  <!-- 7:30 PM — Dinner -->
+  <!-- 7:30 PM — Tiger Tiger -->
   <article class="card">
     <div class="card__inner">
       <div class="card__img">
-        <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?w=800&q=80" alt="Traditional Coorgi meal" loading="lazy">
+        <img src="https://b.zmtcdn.com/data/pictures/7/19498647/d75f3f39a7d5c40f56371e94e1e3e539.jpg" alt="Tiger Tiger Ethnic Kodava Dining, Madikeri" loading="lazy">
         <span class="card__time-badge">7:30 PM</span>
         <span class="card__type-badge badge--meal">Dinner</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Tiger Tiger</h3>
-        <p class="card__place">Near Raja's Seat</p>
-        <p class="card__desc">Traditional slow-cooked Coorgi meals in a quiet, intimate setting. The perfect end to day one.</p>
+        <p class="card__place">Raja Seat Road, Madikeri</p>
+        <p class="card__desc">A cozy family-run home turned restaurant. Mom cooks, son Apanna serves. Traditional slow-cooked Coorgi meals in a quiet backyard setting.</p>
+        <div class="card__info">
+          <p class="card__info-title">What to do here</p>
+          <ul class="card__info-list">
+            <li>Must try: Pandi Curry (pork) with Kadambuttu (rice dumplings)</li>
+            <li>Chat with Apanna — he'll walk you through the menu and the story behind each dish</li>
+            <li>Closed on Wednesdays — we're going Saturday, so we're good</li>
+            <li>Small portions so order a few dishes to share family-style</li>
+          </ul>
+        </div>
       </div>
     </div>
   </article>
@@ -542,7 +655,7 @@ body::after{
 
 <!-- ═══ PHOTO BREAK ═══ -->
 <div class="photo-break">
-  <img src="https://images.unsplash.com/photo-1582407947092-50b8a2fa23fa?w=1920&q=80" alt="Coffee plantation in Coorg" loading="lazy">
+  <img src="https://mercaragoldestate.com/wp-content/uploads/2021/08/estate-gen-scaled-800x533.jpg" alt="Mercara Gold Estate coffee plantation in Coorg" loading="lazy">
   <p class="photo-break__caption">"The land of coffee, mist, and stories whispered through the trees."</p>
 </div>
 
@@ -555,18 +668,27 @@ body::after{
 
 <section class="timeline">
 
-  <!-- 9:30 AM — Breakfast -->
+  <!-- 9:30 AM — Beans N Brews -->
   <article class="card">
     <div class="card__inner">
       <div class="card__img">
-        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=800&q=80" alt="Heritage cafe morning" loading="lazy">
+        <img src="https://b.zmtcdn.com/data/pictures/3/19347183/48c8c5e30f97287f9ce5f6fb89a4e2e3.jpg" alt="Beans N Brews at Raintree, Madikeri" loading="lazy">
         <span class="card__time-badge">9:30 AM</span>
         <span class="card__type-badge badge--meal">Breakfast</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Beans N Brews at Raintree</h3>
-        <p class="card__place">Heritage House</p>
+        <p class="card__place">Heritage House, Madikeri</p>
         <p class="card__desc">A heritage house with a relaxed patio. Very cozy atmosphere for a slow morning — no rush, just warmth and good food.</p>
+        <div class="card__info">
+          <p class="card__info-title">What to expect</p>
+          <ul class="card__info-list">
+            <li>Sit on the open-air patio under the Raintree canopy</li>
+            <li>Order the Coorgi breakfast platter if available</li>
+            <li>Great coffee — fitting for a place in India's coffee country</li>
+            <li>No rush — take your time, the plantation tour starts at 11</li>
+          </ul>
+        </div>
       </div>
     </div>
   </article>
@@ -575,14 +697,23 @@ body::after{
   <article class="card">
     <div class="card__inner">
       <div class="card__img">
-        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=80" alt="Coffee plantation tour" loading="lazy">
+        <img src="https://mercaragoldestate.com/wp-content/uploads/2021/08/estate-gen-scaled-800x533.jpg" alt="Mercara Gold Estate Coffee Plantation tour" loading="lazy">
         <span class="card__time-badge">11:00 AM</span>
         <span class="card__type-badge badge--activity">Activity</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Mercara Gold Estate</h3>
-        <p class="card__place">Coffee Plantation Tour</p>
-        <p class="card__desc">Guided tour at a gentle pace through the coffee and spice estate. Learn how beans go from plant to cup.</p>
+        <p class="card__place">Coffee Plantation — 8 km from Madikeri</p>
+        <p class="card__desc">A 25-year-old coffee and spice farm with Arabica, Robusta, and Liberica varieties. Guided tour, museum, and estate-fresh brews.</p>
+        <div class="card__info">
+          <p class="card__info-title">What to do here</p>
+          <ul class="card__info-list">
+            <li>Take the guided estate walk — see coffee, pepper, cardamom, and vanilla</li>
+            <li>Visit the World Coffee Museum (opened 2023)</li>
+            <li>Taste estate-fresh coffee paired with local chocolates at the cafe</li>
+            <li>They also serve traditional Coorg-style lunch (veg &amp; non-veg)</li>
+          </ul>
+        </div>
         <span class="card__access">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           Flat sections &amp; cafe to sit at
@@ -591,18 +722,27 @@ body::after{
     </div>
   </article>
 
-  <!-- 1:30 PM — Lunch -->
+  <!-- 1:30 PM — Coorg Cuisine -->
   <article class="card">
     <div class="card__inner">
       <div class="card__img">
-        <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=800&q=80" alt="Coorgi cuisine" loading="lazy">
+        <img src="https://b.zmtcdn.com/data/pictures/0/19347190/ea2b1a4e906b96e4bdbd4e1f6bb7ea5e.jpg" alt="Coorg Cuisine restaurant, Madikeri" loading="lazy">
         <span class="card__time-badge">1:30 PM</span>
         <span class="card__type-badge badge--meal">Lunch</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Coorg Cuisine</h3>
-        <p class="card__place">Town Center</p>
-        <p class="card__desc">Hearty and authentic Coorgi food right in the town center. Don't miss the Akki Rotti — a local rice flatbread you'll remember.</p>
+        <p class="card__place">Town Center, Madikeri</p>
+        <p class="card__desc">Hearty and authentic Coorgi food right in the town center. A must-visit for anyone wanting the real taste of Kodagu.</p>
+        <div class="card__info">
+          <p class="card__info-title">What to do here</p>
+          <ul class="card__info-list">
+            <li>Must try: Akki Rotti — crispy rice flatbread, a Coorg staple</li>
+            <li>Also try the Bamboo Shoot Curry if you're adventurous</li>
+            <li>Simple and unpretentious — focus is on the food, not the decor</li>
+            <li>Portions are generous so order wisely</li>
+          </ul>
+        </div>
       </div>
     </div>
   </article>
@@ -611,14 +751,23 @@ body::after{
   <article class="card">
     <div class="card__inner">
       <div class="card__img">
-        <img src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2?w=800&q=80" alt="Temple architecture" loading="lazy">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Omkareshwara_Temple_-_Madikeri_Coorg.jpg/800px-Omkareshwara_Temple_-_Madikeri_Coorg.jpg" alt="Omkareshwara Temple, Madikeri" loading="lazy">
         <span class="card__time-badge">3:30 PM</span>
         <span class="card__type-badge badge--sight">Sightseeing</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Shri Omkareshwara Swamy Temple</h3>
         <p class="card__place">Madikeri</p>
-        <p class="card__desc">A peaceful temple complex blending Islamic and Gothic architecture with Hindu tradition. Sit by the water tank and soak in the calm.</p>
+        <p class="card__desc">Built in 1820 by King Lingarajendra II. A unique blend of Islamic domes, Gothic arches, and Hindu tradition — unlike any temple you've seen.</p>
+        <div class="card__info">
+          <p class="card__info-title">What to do here</p>
+          <ul class="card__info-list">
+            <li>Notice the central dome and four minarets — rare for a Hindu temple</li>
+            <li>Walk around the water tank — very peaceful, great for photos</li>
+            <li>Learn the legend of why the king built it as penance</li>
+            <li>Quick 20-30 minute visit — peaceful and unhurried</li>
+          </ul>
+        </div>
         <span class="card__access">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           Flat temple complex
@@ -627,18 +776,27 @@ body::after{
     </div>
   </article>
 
-  <!-- 5:00 PM — Fort -->
+  <!-- 5:00 PM — Madikeri Fort -->
   <article class="card">
     <div class="card__inner">
       <div class="card__img">
-        <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&q=80" alt="Historic fort" loading="lazy">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Madikeri_Fort%2C_Kodagu.jpg/800px-Madikeri_Fort%2C_Kodagu.jpg" alt="Madikeri Fort, Kodagu" loading="lazy">
         <span class="card__time-badge">5:00 PM</span>
         <span class="card__type-badge badge--history">History</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">Madikeri Fort</h3>
         <p class="card__place">Madikeri Town</p>
-        <p class="card__desc">Walk through centuries of Kodagu history. The museum inside tells the story of the region, and the stone elephants at the gate are iconic.</p>
+        <p class="card__desc">Originally built in the 17th century, rebuilt in granite by Tipu Sultan. Home to a museum, a Gothic church, and the iconic stone elephants.</p>
+        <div class="card__info">
+          <p class="card__info-title">What to do here</p>
+          <ul class="card__info-list">
+            <li>Photo op with the two stone elephant statues at the entrance</li>
+            <li>Visit St. Mark's Church inside — now the Madikeri Fort Museum</li>
+            <li>Walk the ramparts for views of the surrounding town and hills</li>
+            <li>Free entry — takes about 30-45 minutes to explore</li>
+          </ul>
+        </div>
         <span class="card__access">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           Driver drops at entrance — flat walk inside
@@ -647,18 +805,27 @@ body::after{
     </div>
   </article>
 
-  <!-- 7:30 PM — Dinner -->
+  <!-- 7:30 PM — East End Hotel -->
   <article class="card">
     <div class="card__inner">
       <div class="card__img">
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Old school restaurant" loading="lazy">
+        <img src="https://b.zmtcdn.com/data/pictures/1/50641/81d75789c6e1e50e2bd04510be498ddd.jpg" alt="East End Hotel, Madikeri" loading="lazy">
         <span class="card__time-badge">7:30 PM</span>
         <span class="card__type-badge badge--meal">Dinner</span>
       </div>
       <div class="card__body">
         <h3 class="card__name">East End Hotel</h3>
-        <p class="card__place">Final Comfort Meal</p>
-        <p class="card__desc">A local favorite to close the trip. Nostalgic old-school vibe, honest food, and very easy to access. The perfect goodbye to Coorg.</p>
+        <p class="card__place">Stuart Hill, Madikeri</p>
+        <p class="card__desc">A legendary British-era establishment on Stuart Hill. Nostalgic old-school charm, beautiful hill views, and the perfect farewell meal.</p>
+        <div class="card__info">
+          <p class="card__info-title">What to do here</p>
+          <ul class="card__info-list">
+            <li>Must try: Keema Dosa — their signature dish, locally famous</li>
+            <li>Mutton biryani and meatballs are also beloved</li>
+            <li>Soak in the vintage decor and hill-facing views</li>
+            <li>Relaxed vibe — a comforting way to end the trip</li>
+          </ul>
+        </div>
       </div>
     </div>
   </article>
@@ -681,7 +848,7 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 
 document.querySelectorAll('.card').forEach(card => observer.observe(card));
 </script>
